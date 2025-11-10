@@ -1,10 +1,9 @@
 import type { CollectionConfig } from 'payload'
-
-import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
+import { anyone } from '../access/anyone'
 
-export const Categories: CollectionConfig = {
-  slug: 'categories',
+export const Posts: CollectionConfig = {
+  slug: 'posts',
   access: {
     create: authenticated,
     delete: authenticated,
@@ -18,12 +17,15 @@ export const Categories: CollectionConfig = {
     { name: 'title', type: 'text', required: true },
     { name: 'slug', type: 'text', required: true },
     {
-      name: 'posts',
-      type: 'join',
-      collection: 'posts',
-      on: 'categories',
+      name: 'categories',
+      type: 'relationship',
+      relationTo: 'categories',
+      hasMany: true,
     },
-    { name: 'content', type: 'richText' },
+    {
+      name: 'content',
+      type: 'text',
+    },
     {
       name: 'owner',
       type: 'relationship',
