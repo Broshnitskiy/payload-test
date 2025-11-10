@@ -1,0 +1,18 @@
+'use server'
+
+import { getPayload } from 'payload'
+import config from '@payload-config'
+
+export async function getCategories() {
+  const payload = await getPayload({ config })
+
+  try {
+    const categories = await payload.find({
+      collection: 'categories',
+    })
+
+    return categories.docs
+  } catch (error) {
+    throw new Error(`${error instanceof Error ? error.message : 'Unknown error'}`)
+  }
+}

@@ -2,6 +2,7 @@ import { cn } from '@/utilities/ui'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import React from 'react'
+import { Toaster } from 'react-hot-toast'
 
 import { InitTheme } from '@/providers/Theme/InitTheme'
 
@@ -18,6 +19,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body>
         <UserProvider>{children}</UserProvider>
+        <Toaster />
       </body>
     </html>
   )

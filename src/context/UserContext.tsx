@@ -1,17 +1,17 @@
 'use client'
 
+import { User } from '@/payload-types'
 import { createContext, useContext, useState, ReactNode } from 'react'
-import { UserData } from '@/server/actions/authorizeUser'
 
 type UserContextType = {
-  user: UserData | null
-  setUser: (user: UserData | null) => void
+  user: User | null
+  setUser: (user: User | null) => void
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined)
 
 export function UserProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<UserData | null>(null)
+  const [user, setUser] = useState<User | null>(null)
 
   return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>
 }

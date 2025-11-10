@@ -1,17 +1,15 @@
+import { anyone } from '@/access/anyone'
+import { authenticated } from '@/access/authenticated'
 import type { CollectionConfig } from 'payload'
-import { authenticated } from '../access/authenticated'
-import { anyone } from '../access/anyone'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
+  admin: { useAsTitle: 'title' },
   access: {
     create: authenticated,
     delete: authenticated,
     read: anyone,
     update: authenticated,
-  },
-  admin: {
-    useAsTitle: 'title',
   },
   fields: [
     { name: 'title', type: 'text', required: true },
@@ -22,10 +20,7 @@ export const Posts: CollectionConfig = {
       relationTo: 'categories',
       hasMany: true,
     },
-    {
-      name: 'content',
-      type: 'text',
-    },
+    { name: 'content', type: 'text' },
     {
       name: 'owner',
       type: 'relationship',

@@ -2,14 +2,7 @@
 
 import { login } from '@payloadcms/next/auth'
 import config from '@payload-config'
-
-export interface UserData {
-  collection: string
-  createdAt: Date
-  email: string
-  id: string
-  name: string
-}
+import { User } from '@/payload-types'
 
 export async function authorizeUser(email: string, password: string) {
   try {
@@ -19,7 +12,7 @@ export async function authorizeUser(email: string, password: string) {
       email,
       password,
     })
-    return result.user as UserData
+    return result.user as User
   } catch (error) {
     throw new Error(`Login failed: ${error instanceof Error ? error.message : 'Unknown error'}`)
   }

@@ -2,25 +2,25 @@
 
 import { getPayload } from 'payload'
 import config from '@payload-config'
+import { Post } from '@/payload-types'
+import { revalidatePath } from 'next/cache'
 
 export async function createPost({
   title,
   content,
   owner,
-}: {
-  title: string
-  content: string
-  owner: string
-}) {
+  slug,
+  categories,
+}: Pick<Post, 'title' | 'categories' | 'owner' | 'content' | 'slug'>) {
   const payload = await getPayload({ config })
 
   try {
     const post = await payload.create({
       collection: 'posts',
-      title,
-      content,
-      owner,
+      data: { title, content, owner, slug, categories },
     })
+
+    revalidatePath('/')
     return post
   } catch (error) {
     throw new Error(

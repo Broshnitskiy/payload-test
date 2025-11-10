@@ -1,5 +1,8 @@
+import { CreatePostForm } from '@/components/CreatePostForm'
 import { LoginForm } from '@/components/LoginForm'
 import { LogoutButton } from '@/components/LogOutButton'
+import PostsList from '@/components/PostsList'
+import { cn } from '@/utilities/ui'
 import { cookies } from 'next/headers'
 import React from 'react'
 
@@ -10,10 +13,16 @@ export default async function Home() {
   const payloadToken = cookieStore.get(COOKIE_KEY)
 
   return (
-    <div className="pt-10 px-4 justify-center">
-      {payloadToken?.value ? <LogoutButton className={'ml-auto flex mb-4'} /> : null}
-
-      <LoginForm />
+    <div className={'pt-10 px-4 pb-10 flex-col min-h-screen flex items-center'}>
+      {payloadToken?.value ? (
+        <>
+          <LogoutButton className={'ml-auto flex mb-4'} />
+          <CreatePostForm />
+          <PostsList />
+        </>
+      ) : (
+        <LoginForm />
+      )}
     </div>
   )
 }

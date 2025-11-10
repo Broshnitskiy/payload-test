@@ -58,7 +58,7 @@ export function LoginForm() {
 
   if (user) {
     return (
-      <Card className="max-w-md mx-auto mt-10 p-6 text-center">
+      <Card className="max-w-md mt-10 p-6 text-center">
         <CardTitle className="text-xl mb-2">Congratulations, {user.name}</CardTitle>
         <p className="text-gray-500">You have successfully logged in.</p>
       </Card>
@@ -66,7 +66,7 @@ export function LoginForm() {
   }
 
   return (
-    <Card className="max-w-md mx-auto">
+    <Card className="max-w-md w-full my-auto">
       <CardHeader>
         <CardTitle>Log in</CardTitle>
       </CardHeader>
