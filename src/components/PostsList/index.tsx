@@ -1,6 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { getPosts } from '@/server/actions/getPosts'
-import Link from 'next/link'
 
 export default async function PostsList() {
   const posts = await getPosts()
