@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { useUser } from '@/context'
 import { logOut } from '@/server/actions/logOut'
-import { ComponentProps, FC } from 'react'
+import { ComponentProps } from 'react'
 
 type LogoutButtonProps = Pick<ComponentProps<typeof Button>, 'className'>
 

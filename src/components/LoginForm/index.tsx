@@ -29,7 +29,7 @@ type LoginFormValues = z.infer<typeof loginSchema>
 export function LoginForm() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const { user, setUser } = useUser()
+  const { setUser } = useUser()
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -54,15 +54,6 @@ export function LoginForm() {
     } finally {
       setLoading(false)
     }
-  }
-
-  if (user) {
-    return (
-      <Card className="max-w-md mt-10 p-6 text-center">
-        <CardTitle className="text-xl mb-2">Congratulations, {user.name}</CardTitle>
-        <p className="text-gray-500">You have successfully logged in.</p>
-      </Card>
-    )
   }
 
   return (

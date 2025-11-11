@@ -2,7 +2,7 @@ import { CreatePostForm } from '@/components/CreatePostForm'
 import { LoginForm } from '@/components/LoginForm'
 import { LogoutButton } from '@/components/LogOutButton'
 import PostsList from '@/components/PostsList'
-import { cn } from '@/utilities/ui'
+import { Welcome } from '@/components/Welcome'
 import { cookies } from 'next/headers'
 import React from 'react'
 
@@ -17,6 +17,7 @@ export default async function Home() {
       {payloadToken?.value ? (
         <>
           <LogoutButton className={'ml-auto flex mb-4'} />
+          <Welcome />
           <CreatePostForm />
           <PostsList />
         </>
